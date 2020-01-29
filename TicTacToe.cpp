@@ -276,7 +276,31 @@ int main()
 		}
 		else //multiplayer
 		{
+			int turncnt = 0;
 			printBoard();
+			bool turn = 0;
+			while (!iswinner(board) && turncnt != 9)
+			{
+				if (turn == 0)
+				{
+					turncnt++;
+					inputplayer1();
+					turn = 1;
+				}
+				else
+				{
+					turncnt++;
+					inputplayer2();
+					turn = 0;
+				}
+				printBoard();
+				if (iswinner(board) == 1) cout << "\n\tPlayer1 WINS :)\n";
+				else if (iswinner(board)) cout << "\n\tPlayer2 WINS :)\n";
+			}
+			if (turncnt == 9 && iswinner(board) == 0)
+			{
+				cout << "\n\t-+-+-+-+-+-+-+DRAW+-+-+-+-+-+-+-+-\n\t";
+			}
 		}
 
 
