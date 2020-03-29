@@ -234,16 +234,31 @@ void cpuTurn()
 	
 
 }
+void resetBoard()
+{
+	board[0] = ' ';
+	board[1] = ' ';
+	board[2] = ' ';
+	board[3] = ' ';
+	board[4] = ' ';
+	board[5] = ' ';
+	board[6] = ' ';
+	board[7] = ' ';
+	board[8] = ' ';
+	board[9] = ' ';
+
+}
 
 int main()
 {
 	vector<int> A;
-	int choice=1;
-	while (choice !=0 )
+	char choice='y';
+	while (choice=='y' )
 	{
 		A = menu();
 		if (A[0] == 0)                              //single player
 		{
+			resetBoard();
 			printBoard();
 			int turncnt = 0;
 			int difficulty = 0;
@@ -300,12 +315,13 @@ int main()
 			if (turncnt == 9 && iswinner(board) == 0)
 			{
 				cout << "\n\t-+-+-+-+-+-+-+DRAW+-+-+-+-+-+-+-+-\n\t";
+				
 			}
 		}
 
 
-		cout << "DO YOU WANT TO PLAY AGAIN\n";
-		cin >> choice;
+		cout << "DO YOU WANT TO PLAY AGAIN (y/n)\n";
+		choice = _getch();
 	}
 	
 	
